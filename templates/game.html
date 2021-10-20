@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>HYW</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+	<noscript>
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/noscript.css') }}" />
+	</noscript>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/ddrfont.css') }}" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+</head>
+
+<body class="is-preload">
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Header -->
+		<header id="header" class="alt">
+			<h1>HYW</h1>
+			<p>AI Artathon 2.0 Submission by team OFM<br /><a href="https://linkedin.com/in/orjwan-zaafarani">Orjwan
+					Zaafarani</a>, <a href="https://linkedin.com/in/faresalaboud">Fares Alaboud</a>, <a
+					href="https://linkedin.com/in/mmohammedalaboud">Mohammed Alaboud</a></p>
+		</header>
+
+		<!-- Main -->
+		<div id="main">
+			<!-- Introduction -->
+			<section id="intro" class="main row">
+				<div id="youtube_url_form_container" class="col-12" style="text-align: center;">
+					{% if error %}<div class="box error">{{ error }}</div>{% endif %}
+					{% if success %}<div class="box success">{{ success }}</div>{% endif %}
+					{% if warning %}<div class="box warning">{{ warning }}</div>{% endif %}
+					<form method="post" action="/download" class="row">
+						<h3 class="col-3">Enter URL</h3>
+						<input class="col-7" type="text" width="400px" id="url" name="url"
+							value="https://www.youtube.com/watch?v=6fchNJT_J1Y"><br>
+						<input class="col-2" type="submit" value="Submit" onclick="submitBtnClicked()">
+					</form>
+					<hr>
+				</div>
+				<div id="loading" style="margin: 0; text-align: center;" class="col-12 hidden animate__animated">
+					<img height="100px" src="{{ url_for('static', filename='img/loading.gif') }}">
+				</div>
+			</section>
+			<section id="cameras" class="row">
+				<div class="col-6">
+					<img src="{{ url_for('video_feed') }}" width="100%">
+				</div>
+				<div class="col-6">
+					<img src="{{ url_for('static', filename='img/sticks.gif') }}" width="100%">
+				</div>
+			</section>
+		</div>
+
+		<!-- Footer -->
+		<footer id="footer">
+			<p class="copyright">Design inspired by <a href="https://html5up.net">HTML5 UP</a>.</p>
+		</footer>
+	</div>
+
+	<!-- Scripts -->
+	<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/jquery.scrollex.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/jquery.scrolly.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/browser.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/breakpoints.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/util.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+
+</html>

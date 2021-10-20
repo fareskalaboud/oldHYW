@@ -1,0 +1,30 @@
+.box {
+    border: 1px solid #ccc;
+    background-color: #eee;
+    padding: 0.3em;
+    font-weight: 500;
+    color: black;
+}
+
+.warning {
+    border: 1px solid rgb(179, 152, 0);
+    background-color: rgb(253, 255, 157);
+}
+
+.error {
+    border: 1px solid rgb(179, 0, 0);
+    background-color: rgb(255, 203, 203);
+}
+
+.success {
+    border: 1px solid rgb(0, 112, 28);
+    background-color: rgb(157, 255, 194);
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+#intro {
+    height: 300px;
+}
