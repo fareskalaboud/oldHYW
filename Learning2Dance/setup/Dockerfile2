@@ -1,0 +1,34 @@
+FROM pytorch/pytorch:1.4-cuda10.1-cudnn7-devel
+
+COPY requirements2.txt /tmp/requirements2.txt
+
+RUN apt-get -y update
+RUN apt-get -y upgrade
+RUN apt-get install -y ffmpeg
+
+RUN apt-get update && apt-get install -y \
+    python3-pip
+
+RUN pip3 install pkgconfig freetype-py
+RUN apt-get install -y libhdf5-serial-dev
+RUN apt-get update && \
+    apt-get install -y libxslt1-dev libfreetype6-dev
+RUN pip3 install --upgrade setuptools -U pip ez_setup 
+RUN pip3 install -r /tmp/requirements2.txt
+
+COPY requirements2.2.txt /tmp/requirements2.2.txt
+
+RUN pip3 install -r /tmp/requirements2.2.txt
+
+RUN conda install -c conda-forge opencv
+RUN conda install scipy
+RUN conda install -c conda-forge librosa
+RUN conda install -c pytorch torchaudio
+RUN conda install tensorboard
+
+RUN conda install -c omfit csaps
+
+
+
+HEALTHCHECK --timeout=1m --retries=1 \
+    CMD python3 -c "import torch"
