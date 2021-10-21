@@ -2,14 +2,4 @@ Flask
 pytube
 moviepy
 opencv-python
-python-socketio
-Flask_SocketIO
-Werkzeug
-Flask-Login
-Flask-Session
-Flask_SocketIO
-itsdangerous
-Jinja2
-MarkupSafe
-python-engineio
-six
+mediapipe

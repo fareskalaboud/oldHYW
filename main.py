@@ -1,5 +1,4 @@
 from flask import Flask, render_template, Response, request
-from flask_sock import Sock
 from helper import gen_frames
 from pytube import YouTube
 import os, traceback
@@ -27,9 +26,9 @@ def download():
                 YouTube(request.form['url']).streams.get_highest_resolution().download(output_path='./Video', filename='vid.mp4')
                 print("Converting to audio")
                 video = VideoFileClip(r'./Video/vid.mp4')
-                if os.path.exists("./Audio/song.mp3"):
-                    os.remove("./Audio/song.mp3")
-                video.audio.set_duration(30).write_audiofile(r"./Audio/song.mp3")
+                if os.path.exists("./Audio/song.wav"):
+                    os.remove("./Audio/song.wav")
+                video.audio.set_duration(30).write_audiofile(r"./Audio/song.wav")
                 print("Complete")
                 return render_template('game.html', success="Success")
             except:
