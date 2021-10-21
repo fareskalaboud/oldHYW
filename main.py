@@ -25,7 +25,7 @@ def download():
                     os.remove("./Video/vid.mp4")
                 YouTube(request.form['url']).streams.get_highest_resolution().download(output_path='./Video', filename='vid.mp4')
                 print("Converting to audio")
-                video = VideoFileClip(r'./Video/vid.mp4')
+                video = VideoFileClip(r'./Video/vid.mp4').set_duration(13)
                 if os.path.exists("./Audio/song.wav"):
                     os.remove("./Audio/song.wav")
                 video.audio.write_audiofile(r"./Audio/song.wav")
