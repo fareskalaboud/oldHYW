@@ -1,3 +1,6 @@
+from flask.scaffold import F
+import json
+
 data = [
     544.8982543945312,
     199.16781616210938,
@@ -76,12 +79,43 @@ data = [
     1.0
 ]
 
-chunks = [data[x:x+3] for x in range(0, len(data), 3)]
-print(chunks)
+# chunks = [data[x:x+3] for x in range(0, len(data), 3)]
+# print(chunks)
 
-print("L_hip", str(chunks[12][0]), str(chunks[12][1]))
-print("R_hip", str(chunks[13][0]), str(chunks[13][1]))
-print("L_elbow", str(chunks[6][0]), str(chunks[6][1]))
-print("R_elbow", str(chunks[3][0]), str(chunks[3][1]))
-print("L_shoulder", str(chunks[5][0]), str(chunks[5][1]))
-print("R_shoulder", str(chunks[2][0]), str(chunks[2][1]))
+# print("L_hip", str(chunks[12][0]), str(chunks[12][1]))
+# print("R_hip", str(chunks[13][0]), str(chunks[13][1]))
+# print("L_elbow", str(chunks[6][0]), str(chunks[6][1]))
+# print("R_elbow", str(chunks[3][0]), str(chunks[3][1]))
+# print("L_shoulder", str(chunks[5][0]), str(chunks[5][1]))
+# print("R_shoulder", str(chunks[2][0]), str(chunks[2][1]))
+
+file_n_list = []
+filenames = []
+second = 0
+
+for i in range(0,450):
+    if (i % 15 == 0):
+        file_n_list.append(i)
+
+for n in file_n_list:
+    if (len(str(n)) == 1):
+        filenames.append(f'00000000000{n}_keypoints.json')
+    elif (len(str(n)) == 2):
+        filenames.append(f'0000000000{n}_keypoints.json')
+    else:
+        filenames.append(f'000000000{n}_keypoints.json')
+
+for f in filenames:
+    jd = json.load(open(f'Learning2Dance\output\michael\\vid2vid\\test_openpose\\{f}'))
+    pose_keypoints_2d = jd['people'][0]['pose_keypoints_2d']
+    chunks = [pose_keypoints_2d[x:x+3] for x in range(0, len(pose_keypoints_2d), 3)]
+    print("FRAME NUMBER: ", second)
+    print("L_hip", str(float(chunks[12][0]/1000)), str(float(chunks[12][1]/1000)))
+    print("R_hip", str(float(chunks[13][0]/1000)), str(float(chunks[13][1]/1000)))
+    print("L_elbow", str(float(chunks[6][0]/1000)), str(float(chunks[6][1]/1000)))
+    print("R_elbow", str(float(chunks[3][0]/1000)), str(float(chunks[3][1]/1000)))
+    print("L_shoulder", str(float(chunks[5][0]/1000)), str(float(chunks[5][1]/1000)))
+    print("R_shoulder", str(float(chunks[2][0]/1000)), str(float(chunks[2][1]/1000)), '\n\n')
+    second += 1
+
+print(second)
