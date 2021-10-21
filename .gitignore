@@ -10,6 +10,7 @@
 ### Media files ###
 Video/*
 Audio/*
+PoseVideos/*
 
 ### Python ###
 # Byte-compiled / optimized / DLL files

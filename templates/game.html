@@ -21,8 +21,8 @@
 
 		<!-- Header -->
 		<header id="header" class="alt">
-			<h1>HYW</h1>
-			<p>AI Artathon 2.0 Submission by team OFM<br /><a href="https://linkedin.com/in/orjwan-zaafarani">Orjwan
+			<h1>Just Dance AI-volution</h1>
+			<p>AI Artathon 2.0 Submission by team Key Points<br /><a href="https://linkedin.com/in/orjwan-zaafarani">Orjwan
 					Zaafarani</a>, <a href="https://linkedin.com/in/faresalaboud">Fares Alaboud</a>, <a
 					href="https://linkedin.com/in/mmohammedalaboud">Mohammed Alaboud</a></p>
 		</header>
@@ -32,9 +32,9 @@
 			<!-- Introduction -->
 			<section id="intro" class="main row">
 				<div id="youtube_url_form_container" class="col-12" style="text-align: center;">
-					{% if error %}<div class="box error">{{ error }}</div>{% endif %}
-					{% if success %}<div class="box success">{{ success }}</div>{% endif %}
-					{% if warning %}<div class="box warning">{{ warning }}</div>{% endif %}
+					{% if error %}<div id="box-er" class="box error">{{ error }}</div>{% endif %}
+					{% if success %}<div id="box-sc" class="box success">{{ success }}</div>{% endif %}
+					{% if warning %}<div id="box-wr" class="box warning">{{ warning }}</div>{% endif %}
 					<form method="post" action="/download" class="row">
 						<h3 class="col-3">Enter URL</h3>
 						<input class="col-7" type="text" width="400px" id="url" name="url"
@@ -52,7 +52,11 @@
 					<img src="{{ url_for('video_feed') }}" width="100%">
 				</div>
 				<div class="col-6">
-					<img src="{{ url_for('static', filename='img/sticks.gif') }}" width="100%">
+					<video width="100%" controls>
+						<source src="{{ url_for('static', filename='img/2.mp4') }}" type="video/mp4">
+					  
+					</video>
+					<!-- <img src="{{ url_for('static', filename='img/2.mp4') }}" width="100%"> -->
 				</div>
 			</section>
 		</div>

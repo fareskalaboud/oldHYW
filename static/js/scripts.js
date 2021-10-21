@@ -6,4 +6,8 @@ function submitBtnClicked() {
 
     $("#loading").removeClass("hidden");
     $("#loading").addClass("animate__fadeIn");
+
+    $("#box-er").addClass("hidden");
+    $("#box-sc").addClass("hidden");
+    $("#box-wr").addClass("hidden");
 }

@@ -1,11 +1,11 @@
 from flask import Flask, render_template, Response, request
+from flask_sock import Sock
 from helper import gen_frames
 from pytube import YouTube
 import os, traceback
 from moviepy.editor import *
 
 app = Flask(__name__)
-
 
 @app.route("/")
 def hello():
@@ -29,7 +29,7 @@ def download():
                 video = VideoFileClip(r'./Video/vid.mp4')
                 if os.path.exists("./Audio/song.mp3"):
                     os.remove("./Audio/song.mp3")
-                video.audio.write_audiofile(r"./Audio/song.mp3")
+                video.audio.set_duration(30).write_audiofile(r"./Audio/song.mp3")
                 print("Complete")
                 return render_template('game.html', success="Success")
             except:
