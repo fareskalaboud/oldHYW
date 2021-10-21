@@ -320,7 +320,7 @@ def test(args, device):
     model.eval()
     
     audio = get_audio_torch(args.input)
-    video_size = int((audio.shape[1]/16000)*args.fps)
+    video_size = int((audio.shape[1]/83000)*args.fps)
 
     z = torch.Tensor(make_z_vary(None, 512, args.size_video, int(video_size/16))).view(1,512,-1,1).to(device)
 
@@ -330,18 +330,14 @@ def test(args, device):
     draw_poses = model(label,z)
 
     notorch_pose = draw_poses[0].permute(1, 2, 0).cpu().data.numpy()
+
     try:
         os.mkdir(args.out_video)
     except:
         pass
     
     label_0 = label.cpu().data.tolist()[0]
-    if label_0 == 0:
-        video_name = '/ballet'
-    elif label_0 == 1:
-        video_name = '/michael'
-    elif label_0 == 2:
-        video_name = '/salsa'
+    video_name = '/output'
 
     os.makedirs(args.out_video + video_name + '/vid2vid/test_img/', exist_ok=True)
     make_video(args.out_video + video_name + '/' + video_name, notorch_pose,video_size)
@@ -362,8 +358,6 @@ def test(args, device):
 
     write_jsons(args.out_video + video_name, notorch_pose, draw_poses.shape[2])
 
-    if args.splines:
-        do_splines(args.out_video + video_name + '/vid2vid/')
     return
 
 def main():

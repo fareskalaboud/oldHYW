@@ -363,7 +363,7 @@ def make_video(name,predictions,n,normalized=3):
             points = np.array(points)
 
             image = np.zeros((w,h,3),np.float32)
-            image_white = np.ones((w,h,3),np.float32)
+            # image_white = np.ones((w,h,3),np.float32)
             points = (points*2)-1
             # points = points*121
             points[:,0] = points[:,0]*(4/4)*350
@@ -377,18 +377,18 @@ def make_video(name,predictions,n,normalized=3):
                 # if  (not np.isnan(point[0])) and (not np.isnan(point[1])):
                 if  (point[0] != 0) and (point[1] != 0):
                     cv2.circle(image,(int(point[0]),int(point[1])),5,colors_rgb[joint],-1)
-                    cv2.circle(image_white,(int(point[0]),int(point[1])),5,colors_rgb[joint],-1)
+                    # cv2.circle(image_white,(int(point[0]),int(point[1])),5,colors_rgb[joint],-1)
             #conect joints
             for parent,joint in lines.items():
                 # if (not np.isnan(points[parent][0])) and (not np.isnan(points[parent][1])) or (not np.isnan(points[joint][0])) and (not np.isnan(points[joint][1])):
                 if ((points[parent][0] != 0) and (points[parent][1] != 0)) and ((points[joint][0] != 0) and (points[joint][1] != 0)):
                     cv2.line(image,(int(points[parent][0]),int(points[parent][1])),(int(points[joint][0]),int(points[joint][1])),colors_rgb[parent],2,8,0)
-                    cv2.line(image_white,(int(points[parent][0]),int(points[parent][1])),(int(points[joint][0]),int(points[joint][1])),colors_rgb[parent],2,8,0)
+                    # cv2.line(image_white,(int(points[parent][0]),int(points[parent][1])),(int(points[joint][0]),int(points[joint][1])),colors_rgb[parent],2,8,0)
 
             out_video.write((image*255).astype(np.uint8))
-            out_video_white.write((image_white*255).astype(np.uint8))
+            # out_video_white.write((image_white*255).astype(np.uint8))
         out_video.release()
-        out_video_white.release()
+        # out_video_white.release()
     except Exception as e:
         pdb.set_trace()
         f = open('exception.txt','a+')
