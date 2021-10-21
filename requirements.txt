@@ -1,5 +1,4 @@
 Flask
 pytube
 moviepy
-opencv-python
 mediapipe

@@ -28,8 +28,17 @@ def download():
                 video = VideoFileClip(r'./Video/vid.mp4')
                 if os.path.exists("./Audio/song.wav"):
                     os.remove("./Audio/song.wav")
-                video.audio.set_duration(30).write_audiofile(r"./Audio/song.wav")
+                video.audio.write_audiofile(r"./Audio/song.wav")
                 print("Complete")
+                print("Generating the dance")
+                os.system("python Learning2Dance/main_orjwan.py -p test --input Audio/song.wav --cpk_path Learning2Dance/weights/generator.pt --audio_ckp Learning2Dance/weights/audio_classifier.pt --out_video ./PoseVideos --fps 30")
+                print("Done generating")
+                print("Fixing codec and attaching audio")
+                video = VideoFileClip('./PoseVideos/output/output_black.mp4')
+                video.audio = CompositeAudioClip([AudioFileClip('./Audio/song.wav')])
+                if os.path.exists("./static/img/2.mp4"):
+                    os.remove("./static/img/2.mp4")
+                video.write_videofile("static/img/2.mp4", codec='libx264')
                 return render_template('game.html', success="Success")
             except:
                 print("Oops, something went wrong. Try again.")
