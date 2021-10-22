@@ -28,3 +28,29 @@
 #intro {
     height: 400px;
 }
+
+#score {
+    height: 400px;
+}
+
+.score-card {
+    vertical-align: middle;
+    font-size: 35pt;
+}
+
+#random-score {
+    margin: 0 auto;
+    text-align: center;
+}
+
+#score1 {
+    color:rgb(179, 0, 0);
+}
+
+#score2 {
+    color:rgb(179, 152, 0)
+}
+
+#score3 {
+    color:rgb(0, 112, 28)
+}

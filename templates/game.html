@@ -58,6 +58,23 @@
 					</video>
 				</div>
 			</section>
+			<section id="score" class="row">
+				<div id="random-score">
+					<button id="startButton" onclick="startBtn()">Start</button>
+					<div id="score1" class="score-card hidden">
+						<img width="50px" src="{{ url_for('static', filename='img/1.png') }}" />
+						<span class="score-message one">Try harder!</span>
+					</div>
+					<div id="score2" class="score-card hidden">
+						<img width="50px" src="{{ url_for('static', filename='img/2.png') }}" />
+						<span class="score-message two">Not bad!</span>
+					</div>
+					<div id="score3" class="score-card hidden">
+						<img width="50px" src="{{ url_for('static', filename='img/3.png') }}" />
+						<span class="score-message three">Excellent!</span>
+					</div>
+				</div>
+			</section>
 		</div>
 
 		<!-- Footer -->
