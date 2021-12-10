@@ -12,9 +12,11 @@
 	</noscript>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/ddrfont.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/howto-animate.css') }}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Righteous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=El+Messiri">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 
 <body class="is-preload">
@@ -32,38 +34,31 @@
                     <div id="box-sc" class="box success">{{ success }}</div>{% endif %} {% if warning %}
                     <div id="box-wr" class="box warning">{{ warning }}</div>{% endif %}
                     <div>
-                        <h3>Welcome to</h3>
-                        <h3 class="ar" dir="rtl">أهلا بك في</h3>
                         <h1>Just Dance AI-volution</h1>
-                        <h2>Dance to YOUR Music - <span class="ar">ارقص لأغانيك المفضلة</span></h2>
-                        <div class="row" style="text-align:center; margin-bottom: 10px;">
-                            <div class="col-6">
-                                <p>Please select your language</p>
-                                <div class="mt-25">
-                                    <a href="/en/select"><button class="btn languageBtn">English</button></a>
+                        <h2 class="mb-25">Pick your game.</h2>
+                        <div class="row" style="text-align: center;">
+                            <div id="first" class="animate__animated animate__fadeInLeft animate__slow col-6">
+                                <div>
+                                    <img src="{{ url_for('static', filename='img/record.png') }}">
                                 </div>
+                                <h1>Challenge!</h1>
+                                <h2>Record my own dance!</h2>
+                                <!-- <p style="line-height: 35px; margin-top: 15px">Record a dance of your own, and our AI model will learn and save it so you and your friends can play against it.</p> -->
                                 <div class="mt-25">
-                                    <a href="/en/how-it-works"><small><p>How does the game work?</p></small></a>
+                                    <a href="/en/rec/select"><button style="background-color: rgb(255, 225, 249); color: white;" class="btn languageBtn">Continue</button></a>
                                 </div>
                             </div>
-                            <div class="col-6 ar">
-                                <div class="col-6">
-                                    <p class="ar">نرجو اختيار اللغة</p>
-                                    <div class="mt-25">
-                                        <a href="/ar/select"><button class="btn ar languageBtn">عربي</button></a>
-                                    </div>
-                                    <div class="mt-25">
-                                        <a href="/ar/how-it-works"><small><p class="ar">كيف تعمل اللعبة؟</p></small></a>
-                                    </div>
+                            <div id="second" class="animate__animated animate__fadeInRight animate__slow col-6">
+                                <div>
+                                    <img src="{{ url_for('static', filename='img/ai.png') }}">
+                                </div>
+                                <h1>Dance!</h1>
+                                <h2>Play against AI!</h2>
+                                <!-- <p style="line-height: 35px; margin-top: 15px">Play against our dancing AI, which will generate a series of dance moves specifically for the song you chose.</p> -->
+                                <div class="mt-25">
+                                    <a href="/en/ai/select"><button style="background-color: rgb(219, 250, 255); color: white;" class="btn languageBtn">Continue</button></a>
                                 </div>
                             </div>
-                        </div>
-                        <br/>
-                        <div>
-                            <video height="500px" autoplay loop muted>
-								<source src="{{ url_for('static', filename='frontpage.webm') }}" type="video/webm">
-							  Your browser does not support the video tag.
-							  </video>
                         </div>
                     </div>
                 </div>

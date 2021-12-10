@@ -12,9 +12,11 @@
 	</noscript>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/ddrfont.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/howto-animate.css') }}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Righteous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=El+Messiri">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 
 <body class="is-preload">
@@ -32,38 +34,32 @@
                     <div id="box-sc" class="box success">{{ success }}</div>{% endif %} {% if warning %}
                     <div id="box-wr" class="box warning">{{ warning }}</div>{% endif %}
                     <div>
-                        <h3>Welcome to</h3>
-                        <h3 class="ar" dir="rtl">أهلا بك في</h3>
                         <h1>Just Dance AI-volution</h1>
-                        <h2>Dance to YOUR Music - <span class="ar">ارقص لأغانيك المفضلة</span></h2>
-                        <div class="row" style="text-align:center; margin-bottom: 10px;">
-                            <div class="col-6">
-                                <p>Please select your language</p>
-                                <div class="mt-25">
-                                    <a href="/en/select"><button class="btn languageBtn">English</button></a>
+                        <h3 class="mb-25">An interactive game that combines artificial intelligence, art, music, and dancing.</h3>
+                        <h4 id="zeroth" class="mb-25 animate__animated animate__fadeInDown">How does it work?</h4>
+                        <div class="row">
+                            <div id="first" class="animate__animated animate__fadeInDown animate__delay-2s animate__slow col-4">
+                                <div style="width: 400px; height: 400px;">
+                                    <img style="max-width: 400px" src="{{ url_for('static', filename='img/first.jpg') }}">
                                 </div>
-                                <div class="mt-25">
-                                    <a href="/en/how-it-works"><small><p>How does the game work?</p></small></a>
-                                </div>
+                                <p style="line-height: 35px; margin-top: 15px">Pick your favourite song from YouTube. We'll download the first 30 seconds.</p>
                             </div>
-                            <div class="col-6 ar">
-                                <div class="col-6">
-                                    <p class="ar">نرجو اختيار اللغة</p>
-                                    <div class="mt-25">
-                                        <a href="/ar/select"><button class="btn ar languageBtn">عربي</button></a>
-                                    </div>
-                                    <div class="mt-25">
-                                        <a href="/ar/how-it-works"><small><p class="ar">كيف تعمل اللعبة؟</p></small></a>
-                                    </div>
+                            <div id="second" class="animate__animated animate__fadeInDown animate__delay-3s animate__slow col-4">
+                                <div style="width: 400px; height: 400px;">
+                                    <img src="{{ url_for('static', filename='img/second.gif') }}">
                                 </div>
+                                <p style="line-height: 35px; margin-top: 15px">Our AI listens to and processes the song, then prepares its own dance moves.</p>
                             </div>
-                        </div>
-                        <br/>
-                        <div>
-                            <video height="500px" autoplay loop muted>
-								<source src="{{ url_for('static', filename='frontpage.webm') }}" type="video/webm">
-							  Your browser does not support the video tag.
-							  </video>
+                            <div id="third" class="animate__animated animate__fadeInDown animate__delay-4s animate__slow col-4">
+                                <video autoplay loop muted style="width: 400px; height: 400px">
+                                    <source src="{{ url_for('static', filename='img/third.webm') }}" type="video/webm">
+                                Your browser does not support the video tag.
+                                </video>
+                                <p style="line-height: 35px; margin-top: 15px">Record your own dance, or play against our AI's own generated dance movements.</p>
+                            </div>
+                            <div id="fourth" class="mt-25 animate__animated animate__fadeInDown animate__delay-5s animate__slow col-12">
+                                <a href="/en/select"><button class="btn languageBtn">Continue</button></a>
+                            </div>
                         </div>
                     </div>
                 </div>
