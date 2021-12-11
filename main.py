@@ -73,10 +73,14 @@ def load_search_en():
             # video = VideoFileClip('./PoseVideos/output/output_black.mp4')
             # video.audio = CompositeAudioClip(
             # [AudioFileClip('./Audio/song.wav')])
-            # if os.path.exists("./static/img/2.mp4"):
-            # os.remove("./static/img/2.mp4")
-            # video.write_videofile("static/img/2.mp4", codec='libx264')
-            return render_template('en-select-song.html')
+            if os.path.exists("./static/practice.mp4"):
+                os.remove("./static/practice.mp4")
+            # video.audio = CompositeAudioClip(
+            # [AudioFileClip('./Audio/song.wav')])
+            video.audio = CompositeAudioClip(
+                [AudioFileClip('./Audio/song.wav')])
+            video.write_videofile("static/practice.mp4", codec='libx264')
+            return render_template('en-practice.html')
         return render_template('en-select-song.html')
 
 
@@ -112,6 +116,11 @@ def load_search_ar():
     elif request.method == 'GET':
         return render_template('ar-select-song.html')
 
+@app.route('/en/play')
+@app.route('/en/ai/play')
+@app.route('/en/rec/play')
+def play_en():
+    return render_template('en-play.html')
 
 @app.route('/video_feed')
 def video_feed():
